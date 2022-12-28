@@ -5,7 +5,7 @@ public class Palindromic {
      *
      * @author: yuan
      * @date: 2022/12/28
-     * Description: 回文数
+     * Description: 回文数,
      */
 
     public static void main(String[] args){
@@ -15,7 +15,7 @@ public class Palindromic {
         int i ,temp, num  , number = 0 ;
         System.out.println("请输入一个数：");
         num = scanner.nextInt();
-        temp = num ;
+        temp = num ;   //暂存这个数
         while(num != 0){
             i = num % 10; //低位拿出来
             number = number*10 + i  ; //左移一位、累加
