@@ -1,10 +1,12 @@
+package com.zky;
+
 import java.util.Scanner;
 
 /**
  *
  * @author: yuan
  * @date: 2022/12/28
- * Description: 金额转换，
+ * Description: 金额转换：输入一个数，转换成零亿零仟零佰零拾零万叁仟贰佰肆拾陆元的形式
  */
 
 public class TransformMoney {

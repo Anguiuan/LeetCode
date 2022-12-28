@@ -1,3 +1,5 @@
+package com.zky;
+
 import java.util.Scanner;
 
 public class Palindromic {
@@ -5,7 +7,7 @@ public class Palindromic {
      *
      * @author: yuan
      * @date: 2022/12/28
-     * Description: 回文数,
+     * Description: 回文数,如果一个数逆过来与原数相等，则称为回文数。如12321
      */
 
     public static void main(String[] args){
