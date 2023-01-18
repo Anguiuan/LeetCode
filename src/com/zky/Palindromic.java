@@ -17,6 +17,10 @@ public class Palindromic {
         System.out.println("请输入一个数：");
         num = scanner.nextInt();
         temp = num;   //暂存这个数
+        if(temp < 0){//若该数小于0，则不是回文数
+            System.out.println("该数不是回文数");
+            return;
+        }
         while (num != 0) {
             i = num % 10; //低位拿出来
             number = number * 10 + i; //左移一位、累加
