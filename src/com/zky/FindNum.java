@@ -28,14 +28,6 @@ public class FindNum {
      *
      * @param arr
      */
-
-    /**
-     * @author: yuan
-     * @date: 2023/2/20 17:06
-     * @param arr
-     * @return: null
-     * @descipton: 已知一个整型数组中只有一个数出现了奇数次，其余数都出现了偶数次，找出出现了奇数次的数。
-     */
     public static void findOne(int[] arr) {
         int eor = 0;
         for (int cur : arr) {
