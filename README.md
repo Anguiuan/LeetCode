@@ -26,3 +26,5 @@
   + RomanToInt： 罗马数字转整数
   
   + LongestCommonPrefix： 最长公共前缀
+  
+  + FindNum：找出出现了奇数次的数
