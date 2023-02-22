@@ -11,7 +11,7 @@ public class Dichotomy {
         int result = dichotomyOrderly(arr1, 7);
         System.out.println("数组下标为：" + result + "，  值为：" + arr1[result]);
 
-        int[] arr2 = {1, 2, 5, 6, 4, 9, 2, 1, 4, 3};
+        int[] arr2 = {1, 2, 5, 6, 4, 9, 2, 1, 4, 3, 5, 6, 2};
         int result2 = dichotomyNotOrder(arr2);
         System.out.println("一个局部最小数的数组下标为：" + result2 + "，  值为：" + arr2[result2]);
     }
@@ -50,23 +50,17 @@ public class Dichotomy {
      */
     public static int dichotomyNotOrder(int[] arr) {
         int left = 0, right = arr.length - 1;
-        for (int i = 0; i < right; i++) {
-            if (arr[i] > arr[i + 1]) {
-                left = i;
-                break;
-            }
-        }
         while (arr[left] < arr[left + 1] && right - left > 2) {
             left++;
         }
-        while (arr[right] > arr[right - 1] && right - left > 2) {
+        while (arr[right] < arr[right - 1] && right - left > 2) {
             right--;
         }
         while (right - left > 2) {
             if (arr[(left + right) / 2] > arr[(left + right) / 2 + 1]) {
                 left = (left + right) / 2;
             } else {
-                right = (left + right) / 2;
+                right = (left + right) / 2 + 1;
             }
         }
         return left + 1;
