@@ -28,3 +28,5 @@
   + LongestCommonPrefix： 最长公共前缀
   
   + FindNum：找出出现了奇数次的数
+  
+  + Dichotomy： 二分法
