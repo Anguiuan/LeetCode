@@ -1,7 +1,7 @@
 package com.zky;
 
 /**
- * @auther: zkyuan
+ * @author: zkyuan
  * @date: 2023/2/21 22:22
  * @description: 二分法
  */
