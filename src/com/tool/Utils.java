@@ -8,8 +8,8 @@ package com.tool;
  */
 public class Utils {
     /**
-     * @author: yuan
-     * @date: 2023/2/23 11:29
+     * @author: zkyuan
+     * @date: 2023/2/22 22:19
      * @param: [arr, i, j]
      * @return: int[]
      * @descipton: 数组交换两数。将数组arr的i下标和j下标的数互换，用异或运算
