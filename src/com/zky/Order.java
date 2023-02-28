@@ -57,6 +57,10 @@ public class Order {
      * @descipton: 冒泡排序升序
      */
     public static int[] bubblingOrder(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            System.out.println("数组长度小于2，拒绝排序");
+            return arr;
+        }
         for (int i = 0; i < arr.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (arr[j] < arr[j - 1]) {
@@ -75,6 +79,10 @@ public class Order {
      * @descipton: 插入排序
      */
     public static int[] insertOrder(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            System.out.println("数组长度小于2，拒绝排序");
+            return arr;
+        }
         for (int i = 0; i < arr.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (arr[j] < arr[j - 1]) {
@@ -95,6 +103,10 @@ public class Order {
      * @descipton: 折半插入。在进行每一趟寻找待插入位置的操作时，使用折半查找的方式
      */
     public static int[] insertSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            System.out.println("数组长度小于2，拒绝排序");
+            return arr;
+        }
         //外层循环控制循环次数
         for (int i = 2; i < arr.length; i++) {
             //临时变量保存待插入元素
@@ -130,6 +142,10 @@ public class Order {
     public static int[] shellSort(int[] arr) {
         //数组长度
         int n = arr.length;
+        if (arr == null || n < 2) {
+            System.out.println("数组长度小于2，拒绝排序");
+            return arr;
+        }
         //外层循环按相同增量的距离分组
         for (int d = n / 2; d > 0; d = d / 2) {
             //对分组进行直接插入排序
@@ -158,6 +174,7 @@ public class Order {
      * @descipton: 快速排序，递归
      */
     public static void quickSort(int[] arr, int left, int right) {
+
         //递归返回条件
         if (left > right) {
             return;
@@ -190,6 +207,10 @@ public class Order {
     }
 
     public static int[] quickSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            System.out.println("数组长度小于2，拒绝排序");
+            return arr;
+        }
         quickSort(arr, 0, arr.length - 1);
         return arr;
     }
@@ -221,12 +242,41 @@ public class Order {
 
     /**
      * @author: yuan
+     * @date: 2023/2/28 17:37
+     * @param: [arr]
+     * @return: void
+     * @descipton: 选择排序
+     */
+    public static int[] selectionSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            System.out.println("数组长度小于2，拒绝排序");
+            return arr;
+        }
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                //找到最小值的下标索引赋给minIndex变量。
+                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
+            }
+            //将最小值与当前位置交换。
+            Utils.swap(arr, i, minIndex);
+        }
+        return arr;
+    }
+
+
+    /**
+     * @author: yuan
      * @date: 2023/2/28 11:43
      * @param: [arr]
      * @return: void
      * @descipton: 堆排序
      */
     public static int[] heapSort(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            System.out.println("数组长度小于2，拒绝排序");
+            return arr;
+        }
         //从倒数第一个非叶子节点开始
         for (int i = arr.length / 2 - 1; i >= 0; i--) {
             //从第一天非叶子节点从下至上，从左至右调整结构
