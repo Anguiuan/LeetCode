@@ -36,6 +36,11 @@ public class Order {
         for (int num : quickSort) {
             System.out.print(num + " ");
         }
+        System.out.print("\n选择排序结果：");
+        int[] choose = chooseSort(arr);
+        for (int num : choose) {
+            System.out.print(num + " ");
+        }
 
     }
 
@@ -181,6 +186,31 @@ public class Order {
 
     public static int[] quickSort(int[] arr) {
         quickSort(arr, 0, arr.length - 1);
+        return arr;
+    }
+
+    /**
+     * @author: yuan
+     * @date: 2023/2/28 9:45
+     * @param: [arr]
+     * @return: int[]
+     * @descipton: 简单选择排序
+     */
+    public static int[] chooseSort(int[] arr) {
+        int min;
+        for (int i = 0; i < arr.length - 1; i++) {
+            min = i;
+            //内层循环找最小值
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[min] > arr[j]) {
+                    min = j;
+                }
+            }
+            //如果min的位置发生了变化，则让min与i下标的元素交换
+            if (min != i) {
+                Utils.swap(arr, i, min);
+            }
+        }
         return arr;
     }
 }
