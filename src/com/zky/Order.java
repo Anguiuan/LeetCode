@@ -108,7 +108,7 @@ public class Order {
             return arr;
         }
         //外层循环控制循环次数
-        for (int i = 2; i < arr.length; i++) {
+        for (int i = 1; i < arr.length; i++) {
             //临时变量保存待插入元素
             int temp = arr[i];
             //有序列表的左右指针
@@ -150,12 +150,12 @@ public class Order {
         for (int d = n / 2; d > 0; d = d / 2) {
             //对分组进行直接插入排序
             for (int i = d; i < n; i++) {
-                //i位置为待排序判断的元素，i之前为有序集合
+                //i位置为待排序判断的元素，i之前为有序集合，直接插入方式
                 if (arr[i] < arr[i - d]) {
                     //临时中间变量temp、排序控制变量j
                     int temp = arr[i], j = i - d;
                     //在要插入的位置后的数组元素后移
-                    for (; j > 0 && temp < arr[j]; j -= d) {
+                    for (; j >= 0 && temp < arr[j]; j -= d) {
                         arr[j + d] = arr[j];
                     }
                     //插入元素
@@ -163,6 +163,22 @@ public class Order {
                 }
             }
         }
+
+/*        for (int d = n / 2; d > 0; d = d / 2) {
+            //对分组进行直接插入排序
+            for (int i = d; i < n; i++) {
+                //i位置为待排序判断的元素，i之前为有序集合
+                while (i - d >= 0) {
+                //冒泡方式
+                    if (arr[i] < arr[i - d]) {
+                        Utils.swap(arr, i, i - d);
+                        i -= d;
+                    } else {
+                        break;
+                    }
+                }
+            }
+        }*/
         return arr;
     }
 
@@ -171,10 +187,9 @@ public class Order {
      * @date: 2023/2/27 16:41
      * @param: [arr, low, high]
      * @return: void
-     * @descipton: 快速排序，递归
+     * @descipton: 快速排序的递归函数
      */
     public static void quickSort(int[] arr, int left, int right) {
-
         //递归返回条件
         if (left > right) {
             return;
@@ -206,6 +221,13 @@ public class Order {
         quickSort(arr, j + 1, right);
     }
 
+    /**
+     * @author: yuan
+     * @date: 2023/3/1 9:56
+     * @param: [arr]
+     * @return: int[]
+     * @descipton: 快速排序
+     */
     public static int[] quickSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             System.out.println("数组长度小于2，拒绝排序");
@@ -233,6 +255,7 @@ public class Order {
                 }
             }
             //如果min的位置发生了变化，则让min与i下标的元素交换
+            //使用异或运算交换两数，不能是同一块内存空间
             if (min != i) {
                 Utils.swap(arr, i, min);
             }
@@ -244,8 +267,8 @@ public class Order {
      * @author: yuan
      * @date: 2023/2/28 17:37
      * @param: [arr]
-     * @return: void
-     * @descipton: 选择排序
+     * @return: int[]
+     * @descipton: 选择排序, newBing
      */
     public static int[] selectionSort(int[] arr) {
         if (arr == null || arr.length < 2) {
@@ -259,11 +282,10 @@ public class Order {
                 minIndex = arr[j] < arr[minIndex] ? j : minIndex;
             }
             //将最小值与当前位置交换。
-            Utils.swap(arr, i, minIndex);
+            Utils.exchange(arr, i, minIndex);
         }
         return arr;
     }
-
 
     /**
      * @author: yuan

@@ -76,9 +76,9 @@ public class Comparison {
         }
         //调用待测算法1和比对算法2，分别给两个数组排序
         //待测排序算法
-        Order.bubblingOrder(array1);
+        Order.heapSort(array1);
         //比对排序算法
-        Order.insertSort(array2);
+        Order.insertOrder(array2);
         //比较每个数据元素是否相等
         for (int i = 0; i < array1.length; i++) {
             if (array1[i] != array2[i]) {
@@ -109,7 +109,7 @@ public class Comparison {
             boolean result = compare(originArray, copyArray);
             //如果不相等，则打印出错误信息，并结束程序
             if (!result) {
-                System.out.println("Error!");
+                System.out.println("排序算法出错!");
                 System.out.println("数组1：" + Arrays.toString(originArray));
                 System.out.println("数组2：" + Arrays.toString(copyArray));
                 //返回false
@@ -117,6 +117,7 @@ public class Comparison {
             }
         }
         //比对完成都没有出错，返回true
+        System.out.println("排序算法正确!");
         return true;
     }
 }
