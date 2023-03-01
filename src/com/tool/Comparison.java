@@ -76,7 +76,7 @@ public class Comparison {
         }
         //调用待测算法1和比对算法2，分别给两个数组排序
         //待测排序算法
-        Order.heapSort(array1);
+        Order.radixSort(array1);
         //比对排序算法
         Order.insertOrder(array2);
         //比较每个数据元素是否相等

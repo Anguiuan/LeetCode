@@ -346,4 +346,106 @@ public class Order {
         //将temp值放到最终的位置
         arr[index] = temp;
     }
+
+    /**
+     * @author: yuan
+     * @date: 2023/3/1 14:01
+     * @param: [arr]
+     * @return: int[]
+     * @descipton: 二路归并
+     */
+    public static int[] mergeSort(int[] arr) {
+        mergeSort(arr, 0, arr.length - 1);
+        return arr;
+    }
+
+    /**
+     * @author: yuan
+     * @date: 2023/3/1 13:53
+     * @param: [arr, low, high]
+     * @return: void
+     * @descipton: 切分，递归的切成两块，
+     */
+    public static void mergeSort(int[] arr, int low, int high) {
+        if (low < high) {
+            int mid = (low + high) / 2;
+            mergeSort(arr, low, mid);
+            mergeSort(arr, mid + 1, high);
+            merge(arr, low, mid, high);
+        }
+    }
+
+    /**
+     * @author: yuan
+     * @date: 2023/3/1 14:01
+     * @param: [arr, low, mid, high]
+     * @return: void
+     * @descipton: 合并两个有序子列
+     */
+    public static void merge(int[] arr, int low, int mid, int high) {
+        int[] temp = new int[high - low + 1];
+        int i = low;
+        int j = mid + 1;
+        int k = 0;
+        while (i <= mid && j <= high) {
+            if (arr[i] < arr[j]) {
+                temp[k++] = arr[i++];
+            } else {
+                temp[k++] = arr[j++];
+            }
+        }
+        while (i <= mid) {
+            temp[k++] = arr[i++];
+        }
+        while (j <= high) {
+            temp[k++] = arr[j++];
+        }
+        for (int x = 0; x < temp.length; x++) {
+            arr[low + x] = temp[x];
+        }
+    }
+
+    /**
+     * @author: yuan
+     * @date: 2023/3/1 14:34
+     * @param: [arr]
+     * @return: void
+     * @descipton: 基数排序
+     */
+    public static void radixSort(int[] arr) {
+        //找到数组中最大的数
+        int max = arr[0];
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[i] > max) {
+                max = arr[i];
+            }
+        }
+        // 计算最大数的位数
+        int digitNum = 0;
+        while (max != 0) {
+            digitNum++;
+            max /= 10;
+        }
+        // 初始化桶
+        int[][] bucket = new int[10][arr.length];
+        int[] count = new int[10];    // 进行排序
+        int mod = 10;
+        int div = 1;
+        for (int i = 0; i < digitNum; i++, div *= 10, mod *= 10) {
+            // 将数据放入桶中
+            for (int j = 0; j < arr.length; j++) {
+                int num = (arr[j] % mod) / div;
+                bucket[num][count[num]++] = arr[j];
+            }
+            // 将桶中的数据放回原数组中
+            int index = 0;
+            for (int j = 0; j < 10; j++) {
+                for (int k = 0; k < count[j]; k++) {
+                    arr[index++] = bucket[j][k];
+                }
+                // 计数器清零
+                count[j] = 0;
+            }
+        }
+    }
 }
